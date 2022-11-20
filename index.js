@@ -10,7 +10,7 @@ app.use(cookieParser());
 
 app.use('/api', mainRouter);
 
-app.listen(process.env.PORT, async () => {
+app.listen(process.env.PORT || process.env.NODE_ENV, async () => {
   try {
     await db.authenticate();
     await db.sync();
@@ -18,5 +18,5 @@ app.listen(process.env.PORT, async () => {
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
-  console.log('Server started on port - ', process.env.PORT);
+  console.log('Server started on port - ', process.env.PORT || process.env.NODE_ENV);
 });

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js NODE_ENV=3000"
   },
   "type": "module",
   "dependencies": {
