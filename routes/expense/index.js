@@ -48,15 +48,16 @@ router.post('/', async (req, res) => {
     date: Date.now()
   });
 
-  await Wallet.update(
-    {
-      value: this.value - value
-    },
+  await Wallet.findOne(
     {
       where: {
         user_id
       }
+    }).then(async (wallet) => {
+    return await wallet.update({
+      value: wallet?.get().value - value
     });
+  });
 
   return res.json({
     data: new_expense
@@ -68,7 +69,7 @@ router.get('/:user_id', async (req, res) => {
 
   const {user_id} = req.params;
 
-  if(!user_id){
+  if (!user_id) {
     res.status(400);
     return res.json({
       error: "user_id not found"
@@ -96,7 +97,7 @@ router.get('/:user_id', async (req, res) => {
         id: category_id
       }
     })
-    if(!category){
+    if (!category) {
       res.status(400);
       return res.json({
         error: "category not found"
