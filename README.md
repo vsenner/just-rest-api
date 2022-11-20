@@ -7,3 +7,5 @@
 - enjoy :)
 
 Server will run on the http://localhost:4000.
+
+Variant - Oblic Dohodiv / Roshodiv
