@@ -64,13 +64,16 @@ router.get('/:user_id', async (req, res) => {
     ]
   });
 
+
   if (!categories_ids) {
     return res.json([]);
   }
 
   const user_categories = await Category.findAll({
     where: {
-      id: Op.in(categories_ids)
+      id: {
+        [Op.in]: categories_ids
+      }
     }
   })
 

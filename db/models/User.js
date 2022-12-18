@@ -7,7 +7,10 @@ const User = DB.define('User', {
     autoIncrement: true,
     primaryKey: true,
   },
-  name: {
+  username: {
+    type: DataTypes.STRING
+  },
+  password: {
     type: DataTypes.STRING
   }
 });
